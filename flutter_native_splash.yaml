@@ -1,0 +1,7 @@
+#闪屏页配置
+flutter_native_splash:
+  image: images/app_icon.png #对应生成iOS中LaunchImage图片，包含1x2x3x
+  color: "#FFFFFF" #闪屏页背景色
+  android: true  #可以选择是否支持android或者iOS
+  android_disable_fullscreen: true #禁用android全屏启动
+  fill: false #如果图像可用在所有的屏幕上添加为true，目前只支持android

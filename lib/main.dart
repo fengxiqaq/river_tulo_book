@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:river_tulo_book/app/data/app_color.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {

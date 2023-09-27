@@ -18,6 +18,7 @@ dependencies:
   flutter_native_splash: ^2.2.19
   lunar: ^1.6.1
   webview_flutter: ^4.2.4
+#  flutter_inappwebview: ^5.7.2+3
   country_flags: ^2.1.1
   xpath_selector_html_parser: ^3.0.1
   flutter:

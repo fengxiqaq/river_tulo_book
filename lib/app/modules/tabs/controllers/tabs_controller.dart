@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:river_tulo_book/app/common/keepAliveWrapper.dart';
-
+import 'package:river_tulo_book/app/modules/book/views/book_view.dart';
+import 'package:river_tulo_book/app/modules/my/views/my_view.dart';
 import '../../home/views/home_view.dart';
 
 class TabsController extends GetxController {
@@ -13,9 +15,9 @@ class TabsController extends GetxController {
 
   var pages = const [
     KeepAliveWrapper(child: HomeView()),
-    Text("2"),
-    Text("3"),
-    Text("4"),
+    KeepAliveWrapper(child: BookView()),
+    Center(child: Text("敬请期待",style: TextStyle(fontSize: 20))),
+    KeepAliveWrapper(child: MyView()),
   ];
 
   @override

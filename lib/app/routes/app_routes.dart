@@ -8,6 +8,11 @@ abstract class Routes {
   static const TABS = _Paths.TABS;
   static const LOCATION = _Paths.LOCATION;
   static const BAZI = _Paths.BAZI;
+  static const RECORD = _Paths.RECORD;
+  static const CALENDAR = _Paths.CALENDAR;
+  static const ZIWEI = _Paths.ZIWEI;
+  static const BOOK = _Paths.BOOK;
+  static const MY = _Paths.MY;
 }
 
 abstract class _Paths {
@@ -17,4 +22,9 @@ abstract class _Paths {
   static const TABS = '/tabs';
   static const LOCATION = '/location';
   static const BAZI = '/bazi';
+  static const RECORD = '/record';
+  static const CALENDAR = '/calendar';
+  static const ZIWEI = '/ziwei';
+  static const BOOK = '/book';
+  static const MY = '/my';
 }

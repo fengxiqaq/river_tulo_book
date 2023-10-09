@@ -23,7 +23,10 @@ class BaziController extends GetxController {
           webController.runJavaScript(
               "javascript:(function() { var head = document.querySelector('#app > div > div > div.wzbz_header');head.remove(head);var footer = document.querySelector('#app > div > div > div.tab_block');})()"
           );
-        }
+        },
+        onNavigationRequest: (NavigationRequest request) {
+          return NavigationDecision.prevent;
+        },
       ));
   }
 

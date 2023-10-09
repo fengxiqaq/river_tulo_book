@@ -45,14 +45,14 @@ class TabsView extends GetView<TabsController> {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: AppColors.golden,
-          child: Text(
-              "讨论", style: TextStyle(color: Colors.black, fontSize: 16)),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(50))),
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {},
+        //   backgroundColor: AppColors.golden,
+        //   child: Text(
+        //       "讨论", style: TextStyle(color: Colors.black, fontSize: 16)),
+        //   shape: RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.all(Radius.circular(50))),
+        // ),
         body: PageView(
           controller: controller.pageController,
           physics: const NeverScrollableScrollPhysics(),

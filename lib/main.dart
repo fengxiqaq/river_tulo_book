@@ -7,7 +7,14 @@ import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent,systemNavigationBarColor: Colors.black12));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+    statusBarColor: Colors.transparent, // 透明状态栏
+    systemNavigationBarColor: Colors.white70,
+    statusBarBrightness: Brightness.light,
+    systemNavigationBarDividerColor: Colors.black12,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
+  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent,systemNavigationBarColor: Colors.black12,statusBarBrightness: Brightness.light));
   runApp(
     ScreenUtilInit(
       designSize: const Size(428, 926),

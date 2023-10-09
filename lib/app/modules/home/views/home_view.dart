@@ -26,10 +26,19 @@ class HomeView extends GetView<HomeController> {
                   padding: EdgeInsets.symmetric(vertical: 25.h),
                   child: Row(
                     children: [
+                      SizedBox(width: 5.w),
                       Text("河图洛书", style: TextStyle(fontSize: 25.sp)),
-                      Expanded(child: Text("切换", style: TextStyle(
-                          fontSize: 25.sp, color: AppColors.colorPrimary),
-                          textAlign: TextAlign.end)),
+                      Expanded(child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("切换", style: TextStyle(
+                              fontSize: 25.sp, color: AppColors.colorPrimary),
+                              textAlign: TextAlign.end),
+                          SizedBox(width: 10.w),
+                          Image.asset("assets/icon/replace.png",height: 25.h),
+                          SizedBox(width: 5.w),
+                        ],
+                      )),
                     ],
                   ),
                 ),
@@ -185,12 +194,13 @@ class HomeView extends GetView<HomeController> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20.h),
-                InkWell(
+                SizedBox(height: 30.h),
+                GestureDetector(
                   onTap: (){
                     Get.toNamed("/bazi");
                   },
                   child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5.w),
                     width: double.infinity,
                     height: 65.h,
                     decoration: const BoxDecoration(
@@ -199,56 +209,66 @@ class HomeView extends GetView<HomeController> {
                     ),
                     child: Center(
                         child: Text("开始排盘", style: TextStyle(color: AppColors
-                            .colorPrimary, fontSize: 25.sp))),
+                            .golden, fontSize: 25.sp))),
                   ),
                 ),
-                SizedBox(height: 20.h),
-                Row(
-                  children: [
-                    Expanded(child: Column(
-                      children: [
-                        Container(
-                            width: double.infinity,
+                SizedBox(height: 30.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: Column(
+                        children: [
+                          Container(
+                              width: 200.w,
+                              height: 50.h,
+                              decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10))
+                              ),
+                              child: Center(child: Text("开始合盘", style: TextStyle(
+                                  color: AppColors.golden, fontSize: 20.sp))),
+                          ),
+                          SizedBox(height: 20.h),
+                          Container(
+                            width: 200.w,
                             height: 50.h,
                             decoration: const BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(10))
                             ),
-                            child: Center(child: Text("开始合盘", style: TextStyle(
-                                color: AppColors.colorPrimary, fontSize: 20.sp))),
-                        ),
-                        SizedBox(height: 20.h),
-                        Container(
-                          width: double.infinity,
-                          height: 50.h,
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(10))
+                            child: Center(child: Text("更多设置", style: TextStyle(
+                                color: AppColors.golden, fontSize: 20.sp))),
                           ),
-                          child: Center(child: Text("更多设置", style: TextStyle(
-                              color: AppColors.colorPrimary, fontSize: 20.sp))),
-                        ),
-                      ],
-                    )),
-                    SizedBox(width: 20.w),
-                    Expanded(child: Column(
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: 150.h,
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(10))
+                        ],
+                      )),
+                      SizedBox(width: 10.w),
+                      Expanded(child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              Get.toNamed("/calendar");
+                            },
+                            child: Container(
+                              width: 140.w,
+                              height: 150.h,
+                              decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(10))
+                              ),
+                              child: Center(child: Text("历", style: TextStyle(
+                                  color: AppColors.golden, fontSize: 50.sp))),
+                            ),
                           ),
-                          child: Center(child: Text("记录", style: TextStyle(
-                              color: AppColors.colorPrimary, fontSize: 25.sp))),
-                        ),
-                      ],
-                    )),
-                  ],
+                        ],
+                      )),
+                    ],
+                  ),
                 )
               ],
             ),

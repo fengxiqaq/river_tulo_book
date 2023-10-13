@@ -23,7 +23,7 @@ class HomeView extends GetView<HomeController> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 25.h),
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: Row(
                     children: [
                       SizedBox(width: 5.w),
@@ -194,7 +194,7 @@ class HomeView extends GetView<HomeController> {
                     ],
                   ),
                 ),
-                SizedBox(height: 30.h),
+                SizedBox(height: 20.h),
                 GestureDetector(
                   onTap: (){
                     Get.toNamed("/bazi");
@@ -212,7 +212,7 @@ class HomeView extends GetView<HomeController> {
                             .golden, fontSize: 25.sp))),
                   ),
                 ),
-                SizedBox(height: 30.h),
+                SizedBox(height: 20.h),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: Row(
@@ -255,7 +255,7 @@ class HomeView extends GetView<HomeController> {
                             },
                             child: Container(
                               width: 140.w,
-                              height: 150.h,
+                              height: 140.h,
                               decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.all(

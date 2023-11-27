@@ -50,8 +50,8 @@ class HomeController extends GetxController {
       onConfirm: (time, lunar) async {
         dateTimeString.value = "${time.year}年${time.month}月${time.day}日 ${time.hour}：${time.minute}";
         this.time = time;
-        var data = {"FUNC":"BDayInfo","longitude":longitude,"latitude":latitude,"TZName":timeZone,"Year":time.year.toString(),"Month":time.month.toString(),"Day":time.day.toString(),"Hour":time.hour.toString(),"Min":time.minute.toString(),"Sec":time.second.toString()};
-        solarTime.value = await SolarTime.getSolarTime(data);
+        // solarTime.value = await SolarTime.getSolarTime(data);
+        solarTime.value = SolarTime.getSolarTime(time,double.parse(longitude.value),double.parse(latitude.value)).toString();
         update();
       },
       onChanged: (time, lunar) {
@@ -60,9 +60,8 @@ class HomeController extends GetxController {
     );
   }
 
-  Future<void> upDateSolarTime() async {
-    var data = {"FUNC":"BDayInfo","longitude":longitude,"latitude":latitude,"TZName":timeZone,"Year":time.year.toString(),"Month":time.month.toString(),"Day":time.day.toString(),"Hour":time.hour.toString(),"Min":time.minute.toString(),"Sec":time.second.toString()};
-    solarTime.value = await SolarTime.getSolarTime(data);
+  upDateSolarTime() {
+    solarTime.value = SolarTime.getSolarTime(time,double.parse(longitude.value),double.parse(latitude.value)).toString();
     update();
   }
 

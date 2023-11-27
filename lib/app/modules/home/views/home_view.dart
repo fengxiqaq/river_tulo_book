@@ -141,9 +141,12 @@ class HomeView extends GetView<HomeController> {
                             locationController.state.clear();
                             locationController.city.clear();
                             Get.dialog(
-                                Dialog(insetPadding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 70.h),
-                                child: const LocationView()
-                            ));
+                                Dialog(backgroundColor: Colors.white12,shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(12))
+                                ),insetPadding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 100.h),
+                                child: const LocationView()),
+                                barrierColor: Colors.black26
+                            );
                           },
                           child: Text(locationController.countryValue.isEmpty || locationController.countryValue == ""  ? "未知地区-北京" : "${locationController.countryValue} ${locationController.stateValue} ${locationController.cityValue}",
                               style: TextStyle(fontSize: 20.sp,overflow: TextOverflow.ellipsis),maxLines: 1)

@@ -36,7 +36,7 @@ void main() {
       },
     ),
   );
-  if(Platform.isWindows || Platform.isIOS || Platform.isLinux){
+  if(Platform.isWindows || Platform.isMacOS || Platform.isLinux){
     doWhenWindowReady(() {
       final win = appWindow;
       const initialSize = Size(450, 1000);

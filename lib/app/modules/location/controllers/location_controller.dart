@@ -14,13 +14,12 @@ class LocationController extends GetxController {
   TextEditingController timezones = TextEditingController();
   final homeController = Get.put(HomeController());
   late WebViewController webController;
-  var data = {"FUNC":"BDayInfo","longitude":"","latitude":"","TZName":"Asia/Shanghai","Year":"2023"};
-
   RxString countryValue = "".obs;
   RxString stateValue = "".obs;
   RxString cityValue = "".obs;
   Rx<Cities> cities = Cities().obs;
   var flag = true.obs;
+  var switchXiaValue = false.obs;
 
   @override
   void onInit() {
@@ -46,36 +45,57 @@ class LocationController extends GetxController {
     update();
   }
 
-  void checkSuccess() async {
-    countryValue.value = country.text;
-    stateValue.value = state.text;
-    cityValue.value = city.text;
-    homeController.longitude.value =
-    cities.value.longitude!;
-    homeController.latitude.value =
-    cities.value.latitude!;
-    var timeZone = await SolarTime.getTimeZone({"longitude":cities.value.longitude!,"latitude":cities.value.latitude!});
-    data = {"FUNC":"BDayInfo","longitude":cities.value.longitude!,"latitude":cities.value.latitude!,"TZName":timeZone,"Year":homeController.time.year.toString(),"Month":homeController.time.month.toString(),"Day":homeController.time.day.toString(),"Hour":homeController.time.hour.toString(),"Min":homeController.time.minute.toString(),"Sec":homeController.time.second.toString()};
-    homeController.solarTime.value = await SolarTime.getSolarTime(data);
+  void checkSuccess(type) async {
+    var timeZone;
+    if(type == 1){
+      countryValue.value = country.text;
+      stateValue.value = state.text;
+      cityValue.value = city.text;
+      homeController.longitude.value =
+      cities.value.longitude!;
+      homeController.latitude.value =
+      cities.value.latitude!;
+      timeZone = await SolarTime.getTimeZone({"longitude":cities.value.longitude!,"latitude":cities.value.latitude!});
+    }
+    else {
+      countryValue.value = "其他地区";
+      stateValue.value = "";
+      cityValue.value = "";
+      String text = long.text;
+      var split = text.split(",");
+      homeController.longitude.value = split[0];
+      homeController.latitude.value = split[1];
+      timeZone = await SolarTime.getTimeZone({"longitude":split[0],"latitude":split[1]});
+    }
+    var solarTime = SolarTime.getSolarTime(homeController.time,double.parse(cities.value.longitude!),double.parse(cities.value.latitude!));
+    if(switchXiaValue.value){
+      homeController.solarTime.value = solarTime.subtract(const Duration(hours: 1)).toString();
+    }
+    else {
+      homeController.solarTime.value = solarTime.toString();
+    }
     homeController.timeZone.value= timeZone;
     homeController.update();
     Get.back();
   }
 
-  Future<void> checkSuccess2() async {
-    countryValue.value = "其他地区";
-    stateValue.value = "";
-    cityValue.value = "";
-    String text = long.text;
-    var split = text.split(",");
-    homeController.longitude.value = split[0];
-    homeController.latitude.value = split[1];
-    var timeZone = await SolarTime.getTimeZone({"longitude":split[0],"latitude":split[1]});
-    data = {"FUNC":"BDayInfo","longitude":split[0],"latitude":split[1],"TZName":timeZone,"Year":homeController.time.year.toString(),"Month":homeController.time.month.toString(),"Day":homeController.time.day.toString(),"Hour":homeController.time.hour.toString(),"Min":homeController.time.minute.toString(),"Sec":homeController.time.second.toString()};
-    homeController.solarTime.value = await SolarTime.getSolarTime(data);
-    homeController.timeZone.value = timeZone;
-    homeController.update();
-    Get.back();
+  // checkSuccess2() async {
+  //   countryValue.value = "其他地区";
+  //   stateValue.value = "";
+  //   cityValue.value = "";
+  //   String text = long.text;
+  //   var split = text.split(",");
+  //   homeController.longitude.value = split[0];
+  //   homeController.latitude.value = split[1];
+  //   var timeZone = await SolarTime.getTimeZone({"longitude":split[0],"latitude":split[1]});
+  //   homeController.solarTime.value = SolarTime.getSolarTime(homeController.time,double.parse(cities.value.longitude!),double.parse(cities.value.latitude!)).toString();
+  //   homeController.timeZone.value = timeZone;
+  //   homeController.update();
+  //   Get.back();
+  // }
+
+  onSwitchXiaChanged(bool value){
+    switchXiaValue.value = value;
   }
 
 }

@@ -10,7 +10,8 @@ class CalendarController extends GetxController {
     super.onInit();
     webController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse('https://mobile.51wnl-cq.com/huangli_tab_h5/?posId=BDSS&STIME='))
+      // ..loadRequest(Uri.parse('https://mobile.51wnl-cq.com/huangli_tab_h5/?posId=BDSS&STIME='))
+      ..loadRequest(Uri.parse('https://calendar2.iwzbz.com'))
       ..setUserAgent("Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36 Edg/117.0.0.0")
       ..enableZoom(false)
       ..setNavigationDelegate(NavigationDelegate(

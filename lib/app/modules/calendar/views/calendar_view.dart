@@ -12,7 +12,7 @@ class CalendarView extends GetView<CalendarController> {
         title: const Text('中华万年历'),
         centerTitle: true,
       ),
-      body: WebViewWidget(controller: controller.webController),
+      body: SafeArea(child: WebViewWidget(controller: controller.webController)),
     );
   }
 }

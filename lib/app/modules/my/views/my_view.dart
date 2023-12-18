@@ -17,6 +17,7 @@ class MyView extends GetView<MyController> {
         child: Text(
           'MyView is working',
           style: TextStyle(fontSize: 20),
+
         ),
       ),
     );

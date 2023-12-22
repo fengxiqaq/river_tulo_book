@@ -24,9 +24,9 @@ class BaziController extends GetxController {
               "javascript:(function() { var head = document.querySelector('#app > div > div > div.wzbz_header');head.remove(head);var footer = document.querySelector('#app > div > div > div.tab_block');})()"
           );
         },
-        onNavigationRequest: (NavigationRequest request) {
-          return NavigationDecision.prevent;
-        },
+        // onNavigationRequest: (NavigationRequest request) {
+        //   return NavigationDecision.prevent;
+        // },
       ));
   }
 

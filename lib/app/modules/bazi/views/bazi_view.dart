@@ -13,21 +13,18 @@ class BaziView extends GetView<BaziController> {
       //   title: const Text('八字排盘'),
       //   centerTitle: true,
       // ),
-      body: Stack(
-          children: [
-            Padding(
-                padding: EdgeInsets.only(top: 45.h),
-                child: WebViewWidget(controller: controller.webController)),
-            Container(
-              height: 100.h,
-              color: Colors.white,
-              child: AppBar(
-                title: const Text('八字排盘'),
-                centerTitle: true,
-              ),
+      body: Stack(children: [
+        SafeArea(top: true,child: WebViewWidget(controller: controller.webController)),
+        SafeArea(
+          child: SizedBox(
+            height: 56.h,
+            child: AppBar(
+              title: const Text('八字排盘'),
+              centerTitle: true,
             ),
-          ]
-      ),
+          ),
+        ),
+      ]),
     );
   }
 }

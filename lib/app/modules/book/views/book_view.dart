@@ -1,8 +1,10 @@
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
-
+import 'package:path_provider/path_provider.dart';
 import '../../../data/app_color.dart';
 import '../controllers/book_controller.dart';
 
@@ -217,17 +219,22 @@ class BookView extends GetView<BookController> {
                         shrinkWrap: true,
                         crossAxisCount: 2,
                         children: [
-                          Container(
-                            height: 200.h,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffeeeeee),
-                              borderRadius: BorderRadius.all(Radius.circular(12))
-                            ),
-                            child: Column(
-                              children: [
-                                Image.network("https://www.iwzbz.com/h5bookface/v1/bk_3_1_1.png",height: 120.h,fit: BoxFit.cover),
-                                Text("八段锦",style: TextStyle(color: AppColors.colorPrimary,fontSize: 16.sp))
-                              ],
+                          InkWell(
+                            onTap: (){
+                              Get.to(BookView2());
+                            },
+                            child: Container(
+                              height: 200.h,
+                              decoration: const BoxDecoration(
+                                color: Color(0xffeeeeee),
+                                borderRadius: BorderRadius.all(Radius.circular(12))
+                              ),
+                              child: Column(
+                                children: [
+                                  Image.network("https://www.iwzbz.com/h5bookface/v1/bk_3_1_1.png",height: 120.h,fit: BoxFit.cover),
+                                  Text("八段锦",style: TextStyle(color: AppColors.colorPrimary,fontSize: 16.sp))
+                                ],
+                              ),
                             ),
                           ),
                           Container(
@@ -268,4 +275,56 @@ class BookView extends GetView<BookController> {
       );
     });
   }
+}
+
+class BookView2 extends StatefulWidget {
+  const BookView2({super.key});
+
+  @override
+  State<BookView2> createState() => _BookView2State();
+}
+
+class _BookView2State extends State<BookView2> {
+
+  String remotePDFpath = "";
+  int pages = 0;
+  int total = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Document"),
+      ),
+      body: Stack(
+        children: [
+          PDF(
+            // swipeHorizontal: true,
+            onPageChanged:(pages,total){
+              setState(() {
+                this.pages = pages!;
+                this.total = total!;
+              });
+            },
+          ).cachedFromUrl('https://viewscreen.githubusercontent.com/view/pdf?browser=unknown_browser&bypass_fastly=true&color_mode=auto&commit=bfe604175415e5f23c81e14b87a18b51a897c1ee&device=unknown_device&docs_host=https%3A%2F%2Fdocs.github.com&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f66656e6778697161712f72697665725f74756c6f5f626f6f6b732f626665363034313735343135653566323363383165313462383761313862353161383937633165652fe6a285e88ab1e69893e695b02e706466&logged_in=false&nwo=fengxiqaq%2Friver_tulo_books&path=%E6%A2%85%E8%8A%B1%E6%98%93%E6%95%B0.pdf&platform=unknown_platform&repository_id=734234287&repository_type=Repository&version=0'),
+          Positioned(right: 40.w,bottom:40.w,child: Text("${pages + 1} / $total")),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+
+      },child: Text("指定")),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // createFileOfPdfUrl().then((f) {
+    //   setState(() {
+    //     remotePDFpath = f.path;
+    //   });
+    // });
+  }
+
 }

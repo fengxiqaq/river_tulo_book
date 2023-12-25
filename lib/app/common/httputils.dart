@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Http {
   static String domain = "https://pcapi-xiaotuxian-front.itheima.net";
   static Dio dio = Dio();
+
   Http() {
     dio.options.connectTimeout = const Duration(seconds: 10); //5s
     dio.options.receiveTimeout = const Duration(seconds: 5);

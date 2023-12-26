@@ -15,7 +15,7 @@ class AppColors {
 
   static Color textFieldColor = Color(int.parse("80E2D1", radix: 16)).withAlpha(255);
 
-  static Color backColor = Color(int.parse("F7F7F7", radix: 16)).withAlpha(255);
+  static Color scaffoldBackgroundColor = const Color(0xffeeeeee);
 
   static Color categoryTextFieldColor = Color(int.parse("F4F4F4", radix: 16)).withAlpha(255);
 

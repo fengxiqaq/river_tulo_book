@@ -16,7 +16,7 @@ class HomeView extends GetView<HomeController> {
     return Obx(() {
       return Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: const Color(0xffeeeeee),
+        backgroundColor: AppColors.scaffoldBackgroundColor,
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),

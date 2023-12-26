@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:river_tulo_book/app/data/app_color.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
@@ -27,10 +28,11 @@ void main() {
           initialRoute: AppPages.INITIAL,
           getPages: AppPages.routes,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(168, 81, 81, 1)),
+            colorScheme: ColorScheme.fromSeed(seedColor: AppColors.colorPrimary),
             fontFamily: 'font',
-            navigationBarTheme: const NavigationBarThemeData(labelTextStyle: MaterialStatePropertyAll(TextStyle(color: Color.fromRGBO(168, 81, 81, 1)))),
+            navigationBarTheme: const NavigationBarThemeData(labelTextStyle: MaterialStatePropertyAll(TextStyle(color: AppColors.colorPrimary))),
             useMaterial3: true,
+            scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor
           ),
         );
       },

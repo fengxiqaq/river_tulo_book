@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get.dart';
+import 'package:river_tulo_book/app/common/common.dart';
 import 'package:river_tulo_book/app/modules/home/controllers/home_controller.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../../common/getSolarTime.dart';
@@ -20,16 +21,16 @@ class LocationView extends GetView<LocationController> {
             borderRadius: BorderRadius.circular(12),
             color: Colors.white
         ),
-        height: controller.flag.value ? 500 : null,
+        height: controller.flag.value ? 500.h : null,
         child: Column(
           children: [
             AppBar(
               backgroundColor: Colors.transparent,
-              title: const Text("选择你的地区"),
+              title: const Text("选择你的地区",style: TextStyle(color: AppColors.golden)),
             ),
             Expanded(
               child: Padding(
-                  padding: const EdgeInsets.only(left: 20,right: 20),
+                  padding: EdgeInsets.only(left: 20.w,right: 20.w),
                   child: Obx(() {
                     return ListView(
                       physics: const NeverScrollableScrollPhysics(),
@@ -68,7 +69,7 @@ class LocationView extends GetView<LocationController> {
                             child: SizedBox(
                                 width: double.infinity,
                                 child: Center(child: Text("选定", style: TextStyle(
-                                    color: AppColors.colorPrimary,
+                                    color: AppColors.golden,
                                     fontSize: 24.sp))))
                         ),
                         SizedBox(height: 40.h),
@@ -131,24 +132,29 @@ class LocationView extends GetView<LocationController> {
                         ),
                         SizedBox(height: 40.h),
                         InkWell(
+                          onTap: (){
+                            Get.to(CommonWebView("https://api.map.baidu.com/lbsapi/getpoint/index.html","第一步"));
+                          },
+                          child: Container(
+                              height: 100.h,
+                              color: AppColors.colorPrimary,
+                              child: Center(child: Text("点击我进入网页",style: TextStyle(color: Colors.white,fontSize: 24.sp)))
+                          ),
+                        ),
+                        SizedBox(height: 20.h),
+                        InkWell(
                             onTap: () => controller.checkSuccess(2),
                             child: SizedBox(
                                 width: double.infinity,
                                 child: Center(child: Text("选定", style: TextStyle(
-                                    color: AppColors.colorPrimary,
+                                    color: AppColors.golden,
                                     fontSize: 24.sp))))
                         ),
-                        SizedBox(height: 40.h),
+                        SizedBox(height: 20.h),
                         InkWell(
                             onTap: () => controller.updateFlag(),
                             child: Text("回到城市选单", style: TextStyle(
                                 color: AppColors.golden, fontSize: 16.sp))
-                        ),
-                        SizedBox(height: 10.h),
-                        Container(
-                            height: 300.h,
-                            child: WebViewWidget(
-                                controller: controller.webController)
                         ),
                       ],
                     );

@@ -17,7 +17,7 @@ dependencies:
   image_picker: ^1.0.4
   flutter_native_splash: ^2.2.19
   lunar: ^1.6.1
-  webview_flutter: ^4.2.4
+  webview_flutter: ^4.4.2
 #  flutter_inappwebview: ^5.7.2+3
   country_flags: ^2.1.1
   xpath_selector_html_parser: ^3.0.1
@@ -26,6 +26,7 @@ dependencies:
   lat_lng_to_timezone: ^0.2.0
 #  path_provider: ^2.1.1
 #  flutter_cached_pdfview: ^0.4.2
+#  flutter_open_chinese_convert: ^0.3.0
   flutter:
     sdk: flutter
 

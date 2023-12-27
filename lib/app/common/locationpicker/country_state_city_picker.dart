@@ -137,7 +137,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
     showGeneralDialog(
       barrierLabel: _title,
       barrierDismissible: false,
-      barrierColor: Colors.black.withOpacity(0.5),
+      barrierColor: Colors.black26,
       transitionDuration: const Duration(milliseconds: 350),
       context: context,
       pageBuilder: (context, __, ___) {
@@ -157,8 +157,8 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                     children: [
                       const SizedBox(height: 20),
                       Text(_title == "Country" ? "国家" : _title == "State" ? "地区" : "城市",
-                          style: TextStyle(
-                              color: Colors.grey.shade800,
+                          style: const TextStyle(
+                              color: AppColors.golden,
                               fontSize: 17,
                               fontWeight: FontWeight.w500)),
                       const SizedBox(height: 10),
@@ -224,19 +224,23 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                                         _countrySubList[index].name!;
                                     _getState(_countrySubList[index].id.toString());
                                     _countrySubList = _countryList;
+                                    Location locations = _countrySubList[index];
+                                    locationController.locations.value = locations;
                                     widget.state.clear();
                                     widget.city.clear();
                                   } else if (_title == 'State') {
                                     widget.state.text = _stateList[index].name!;
                                     _getCity(_stateList[index].id.toString());
                                     _stateList = _stateList;
+                                    States states = _stateList[index];
+                                    locationController.states!.value = states;
                                     widget.city.clear();
                                   } else if (_title == 'City') {
                                     widget.city.text = _cityList[index].name!;
                                     _cityList = _cityList;
                                     Cities cities = _cityList[index];
-                                    locationController.cities.value = cities;
-                                    print(locationController.cities.value);
+                                    locationController.cities!.value = cities;
+                                    print(locationController.cities!.value);
                                   }
                                 });
                                 controller.clear();
@@ -253,8 +257,8 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                                         : _title! == 'State'
                                         ? _stateList[index].name!
                                         : _cityList[index].name!,
-                                    style: TextStyle(
-                                        color: Colors.grey.shade800,
+                                    style: const TextStyle(
+                                        color: AppColors.golden,
                                         fontSize: 16.0)),
                                 leading: _title == 'Country' ? CountryFlag.fromCountryCode(
                                   "${_countrySubList[index].iso2}",
@@ -270,7 +274,8 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                       OutlinedButton(
                         style: OutlinedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0))),
+                                borderRadius: BorderRadius.circular(50.0),
+                            )),
                         onPressed: () {
                           if (_title == 'City' && _cityList.isEmpty) {
                             widget.city.text = controller3.text;
@@ -284,7 +289,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                           controller3.clear();
                           Navigator.pop(context);
                         },
-                        child: const Icon(Icons.close_fullscreen,color: Colors.black),
+                        child: const Icon(Icons.close_fullscreen,color: AppColors.golden),
                       ),
                       const SizedBox(height: 10),
                     ],

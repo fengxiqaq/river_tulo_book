@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:river_tulo_book/app/common/common.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../../data/app_color.dart';
 import '../controllers/book_controller.dart';
@@ -330,6 +331,7 @@ class PdfView extends StatefulWidget {
 class _PdfViewState extends State<PdfView> {
 
   late WebViewController webController;
+  int progress = 0;
 
   @override
   void initState() {
@@ -337,7 +339,7 @@ class _PdfViewState extends State<PdfView> {
     webController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..loadRequest(Uri.parse(widget.url))
-      ..setUserAgent("Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36 Edg/117.0.0.0")
+      // ..setUserAgent("Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36 Edg/117.0.0.0")
       ..enableZoom(false)
       ..setNavigationDelegate(NavigationDelegate(
         // onPageFinished: (url) {
@@ -345,17 +347,27 @@ class _PdfViewState extends State<PdfView> {
         //       "javascript:(function() { var head = document.querySelector('#app > div > div > div.wzbz_header');head.remove(head);var footer = document.querySelector('#app > div > div > div.tab_block');})()"
         //   );
         // }
+        onWebResourceError: (e){
+          buildSnackbar("网络异常！", "请退出重试！", SnackPosition.BOTTOM, EdgeInsets.only(left: 10.w,right: 10.w,bottom: 35.h));
+        },
+        onProgress: (int progress){
+          debugPrint("$progress");
+          setState(() {
+            this.progress = progress;
+          });
+        }
       ));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
       ),
-      body: SafeArea(child: WebViewWidget(controller: webController)),
+      body: SafeArea(child: progress == 100 ? WebViewWidget(controller: webController) : const Center(child: CircularProgressIndicator())),
     );
   }
 

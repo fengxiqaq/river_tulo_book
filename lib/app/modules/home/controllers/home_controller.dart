@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:river_tulo_book/app/common/getSolarTime.dart';
 import '../../../common/datepicker/flutter_lunar_datetime_picker.dart';
+import '../views/home_view.dart';
 
 class HomeController extends GetxController {
 
@@ -16,6 +17,13 @@ class HomeController extends GetxController {
   var longitude = "116.397232".obs;
   var solarTime = "".obs;
   var timeZone = "Asia/Shanghai".obs;
+
+  PageController pageController = PageController();
+  GlobalKey<GifState> globalKey = GlobalKey();
+  List<String> NUMBERS = ["零","壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"];
+
+  //1 八字 2 紫薇 3 六爻
+  int panType = 1;
 
   @override
   void onInit() {

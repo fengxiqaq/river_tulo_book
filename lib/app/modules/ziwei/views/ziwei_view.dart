@@ -10,12 +10,12 @@ class ZiweiView extends GetView<ZiweiController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ZiweiView'),
+        title: const Text('紫薇斗数'),
         centerTitle: true,
       ),
       body: const Center(
         child: Text(
-          'ZiweiView is working',
+          '紫薇斗数 is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

@@ -13,6 +13,7 @@ class BaziView extends GetView<BaziController> {
       //   title: const Text('八字排盘'),
       //   centerTitle: true,
       // ),
+      backgroundColor: Colors.white,
       body: Stack(children: [
         SafeArea(top: true,child: WebViewWidget(controller: controller.webController)),
         SafeArea(

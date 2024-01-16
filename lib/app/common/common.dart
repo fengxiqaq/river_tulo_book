@@ -8,6 +8,14 @@ SnackbarController buildSnackbar(String title,String context,SnackPosition posit
   return Get.snackbar(title, context,snackPosition: position,margin: margin,colorText: AppColors.colorPrimary);
 }
 
+void showSnackBar(String message,BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: Theme.of(context).primaryColor,
+      content: Text(message,
+          textAlign: TextAlign.center,
+          style: const TextStyle(color: Colors.white, fontSize: 16.0))));
+}
+
 class CommonWebView extends StatefulWidget {
 
   String url;

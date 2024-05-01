@@ -7,6 +7,7 @@ import 'package:river_tulo_book/app/common/common.dart';
 import 'package:river_tulo_book/app/data/app_color.dart';
 import 'package:river_tulo_book/app/modules/location/controllers/location_controller.dart';
 import '../../location/views/location_view.dart';
+import '../../tabs/controllers/tabs_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -433,6 +434,7 @@ class HomeView extends GetView<HomeController> {
                                 Text("备注:", style: TextStyle(fontSize: 16.sp)),
                                 Expanded(
                                   child: TextField(
+                                      controller: controller.notes,
                                       textAlign: TextAlign.start,
                                       decoration: InputDecoration(
                                         border: InputBorder.none,
@@ -633,10 +635,18 @@ class HomeView extends GetView<HomeController> {
                   ),
                   SizedBox(height: 20.h),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       switch (controller.panType) {
                         case 1:
-                          Get.toNamed("/bazi");
+                          if(controller.switchValue.value == true){
+                            var isSuccess = await controller.addDataBase(context);
+                            if(isSuccess){
+                              Get.toNamed("/bazi");
+                            }
+                          }
+                          if(controller.switchValue.value == false){
+                            Get.toNamed("/bazi");
+                          }
                           break;
                         case 2:
                           Get.toNamed("/ziwei");
@@ -720,32 +730,45 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Expanded(child: Column(
                           children: [
-                            Container(
-                              width: 200.w,
-                              height: 50.h,
-                              decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10))
+                            GestureDetector(
+                              onTap: (){
+                                showSnackBar("正在☕️开发中。。。", context);
+                              },
+                              child: Container(
+                                width: 200.w,
+                                height: 50.h,
+                                decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10))
+                                ),
+                                child: Center(
+                                    child: Text("开始合盘", style: TextStyle(
+                                        color: AppColors.golden,
+                                        fontSize: 20.sp))),
                               ),
-                              child: Center(
-                                  child: Text("开始合盘", style: TextStyle(
-                                      color: AppColors.golden,
-                                      fontSize: 20.sp))),
                             ),
                             SizedBox(height: 20.h),
-                            Container(
-                              width: 200.w,
-                              height: 50.h,
-                              decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(10))
+                            GestureDetector(
+                              onTap: (){
+                                // showSnackBar("正在☕️开发中。。。", context);
+                                // var tabsController = Get.put(TabsController());
+                                // tabsController.pageController.jumpToPage(3);
+                                // tabsController.currentIndex.value = 3;
+                              },
+                              child: Container(
+                                width: 200.w,
+                                height: 50.h,
+                                decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10))
+                                ),
+                                child: Center(
+                                    child: Text("更多设置", style: TextStyle(
+                                        color: AppColors.golden,
+                                        fontSize: 20.sp))),
                               ),
-                              child: Center(
-                                  child: Text("更多设置", style: TextStyle(
-                                      color: AppColors.golden,
-                                      fontSize: 20.sp))),
                             ),
                           ],
                         )),

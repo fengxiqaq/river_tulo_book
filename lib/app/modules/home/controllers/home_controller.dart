@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:river_tulo_book/app/common/getSolarTime.dart';
+import '../../../common/common.dart';
+import '../../../common/database.dart';
 import '../../../common/datepicker/flutter_lunar_datetime_picker.dart';
 import '../views/home_view.dart';
 
 class HomeController extends GetxController {
 
   var name = TextEditingController();
+  var notes = TextEditingController();
   late DateTime time;
   var switchValue = false.obs;
   //ture 乾 false 坤
@@ -71,6 +74,17 @@ class HomeController extends GetxController {
   upDateSolarTime() {
     solarTime.value = SolarTime.getSolarTime(time,double.parse(longitude.value),double.parse(latitude.value)).toString();
     update();
+  }
+
+  Future<bool> addDataBase(context) async {
+    if(name.text == ""){
+      showSnackBar("保存排盘前请先输入姓名", context);
+      return false;
+    }
+    else {
+      await database.into(database.baZiItems).insert(BaZiItemsCompanion.insert(name: name.text == "" ? "无名氏" : name.text, gender: switchSexValue.value ? 1 : 2, notes: notes.text == "" ? "陌生人" : notes.text, time: time, solarTime: DateTime.parse(solarTime.value), timeZone: timeZone.value, longitude: longitude.value, latitude: latitude.value));
+      return true;
+    }
   }
 
 }

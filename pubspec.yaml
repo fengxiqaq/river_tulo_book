@@ -28,10 +28,16 @@ dependencies:
 #  flutter_cached_pdfview: ^0.4.2
 #  flutter_open_chinese_convert: ^0.3.0
 #  gif: ^2.3.0
+  drift: ^2.14.0
   flutter:
     sdk: flutter
+  sqlite3_flutter_libs: ^0.5.19+1
+  path_provider: ^2.1.2
+  path: ^1.8.3
 
 dev_dependencies: 
+  build_runner: ^2.4.8
+  drift_dev: ^2.14.1
   flutter_lints: ^2.0.0
   flutter_test: 
     sdk: flutter

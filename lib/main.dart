@@ -8,6 +8,7 @@ import 'package:river_tulo_book/app/data/app_color.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
     statusBarColor: Colors.transparent, // 透明状态栏
     systemNavigationBarColor: Colors.white70,

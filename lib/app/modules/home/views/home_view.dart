@@ -36,6 +36,10 @@ class HomeView extends GetView<HomeController> {
                         Expanded(child: GestureDetector(
                           onTap: () {
                             if(controller.pageController.page!.toInt() == 0){
+                              controller.panType = 2;
+                              controller.pageController.animateToPage(1, duration: const Duration(milliseconds: 200), curve: Curves.linear);
+                            }
+                            else if(controller.pageController.page!.toInt() == 1){
                               controller.panType = 3;
                               controller.pageController.animateToPage(2, duration: const Duration(milliseconds: 200), curve: Curves.linear);
                             }

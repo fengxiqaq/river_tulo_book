@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
+import 'package:webview_flutter/webview_flutter.dart';
+import '../../../common/datepicker/date_format.dart';
 import '../controllers/ziwei_controller.dart';
 
 class ZiweiView extends GetView<ZiweiController> {
@@ -9,16 +10,23 @@ class ZiweiView extends GetView<ZiweiController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('紫薇斗数'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          '紫薇斗数 is working',
-          style: TextStyle(fontSize: 20),
+      // appBar: AppBar(
+      //   title: const Text('八字排盘'),
+      //   centerTitle: true,
+      // ),
+      backgroundColor: Colors.white,
+      body: Stack(children: [
+        SafeArea(top: true,child: WebViewWidget(controller: controller.webController)),
+        SafeArea(
+          child: SizedBox(
+            height: 56.h,
+            child: AppBar(
+              title: const Text('紫薇排盘'),
+              centerTitle: true,
+            ),
+          ),
         ),
-      ),
+      ]),
     );
   }
 }

@@ -27,3 +27,7 @@ flutter doctor 查看环境
 Android studio 或 vscode1 下载flutter插件开发。
 
 壮态管理:Getx
+
+
+![8ac9f89d6534dc6bce1a1a3dcb9b445d](https://github.com/user-attachments/assets/48932e88-15c5-4484-a9de-d7dd5789b79f)
+

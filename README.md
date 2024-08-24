@@ -9,6 +9,8 @@
 致力于为各种易学术数提供排盘支持！
 无论热门与冷门。
 
+点击链接加入官方QQ群【河图洛书官方交流群】：http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=YuLevlreSwQ_5Jcp1-aeQMPlaAEgNOuy&authKey=QEUxY4j%2BVJLp1OeYximn5db7nJtB%2BkbgH9Gzy8JipHPOqDrO149naDvMG6e7e%2FbS&noverify=0&group_code=142869913
+
 已实现:
 八字
 紫薇
@@ -30,4 +32,10 @@ Android studio 或 vscode1 下载flutter插件开发。
 
 
 ![8ac9f89d6534dc6bce1a1a3dcb9b445d](https://github.com/user-attachments/assets/48932e88-15c5-4484-a9de-d7dd5789b79f)
+
+![510ce9e1d6c65f00b660cbb4dab6c4d2](https://github.com/user-attachments/assets/d9a1ecf4-f029-4f13-a524-d4866678dbc5)
+
+![71716d15494f8eec2058f08d657d184a](https://github.com/user-attachments/assets/1294ba35-53db-467c-a80f-02cd946415d3)
+
+
 

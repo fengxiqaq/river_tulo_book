@@ -10,22 +10,23 @@ class ZiweiView extends GetView<ZiweiController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('八字排盘'),
-      //   centerTitle: true,
-      // ),
+      appBar: AppBar(
+        title: const Text('紫薇排盘'),
+        centerTitle: true,
+      ),
       backgroundColor: Colors.white,
       body: Stack(children: [
-        SafeArea(top: true,child: WebViewWidget(controller: controller.webController)),
-        SafeArea(
-          child: SizedBox(
-            height: 56.h,
-            child: AppBar(
-              title: const Text('紫薇排盘'),
-              centerTitle: true,
-            ),
-          ),
-        ),
+        WebViewWidget(controller: controller.webController)
+        // SafeArea(top: true,child: ),
+        // SafeArea(
+        //   child: SizedBox(
+        //     height: 56.h,
+        //     child: AppBar(
+        //       title: const Text('紫薇排盘'),
+        //       centerTitle: true,
+        //     ),
+        //   ),
+        // ),
       ]),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -13,22 +14,53 @@ class ZiweiController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    var hour = 0;
+    debugPrint(homeController.time.hour.toString());
+    if(homeController.time.hour == 0){
+      hour = 0;
+    }
+    else if(homeController.time.hour == 1 || homeController.time.hour == 2){
+      hour = 1;
+    }
+    else if(homeController.time.hour == 3 || homeController.time.hour == 4){
+      hour = 2;
+    }
+    else if(homeController.time.hour == 5 || homeController.time.hour == 6){
+      hour = 3;
+    }
+    else if(homeController.time.hour == 7 || homeController.time.hour == 8){
+      hour = 4;
+    }
+    else if(homeController.time.hour == 9 || homeController.time.hour == 10){
+      hour = 5;
+    }
+    else if(homeController.time.hour == 11 || homeController.time.hour == 12){
+      hour = 6;
+    }
+    else if(homeController.time.hour == 13 || homeController.time.hour == 14){
+      hour = 7;
+    }
+    else if(homeController.time.hour == 15 || homeController.time.hour == 16){
+      hour = 8;
+    }
+    else if(homeController.time.hour == 17 || homeController.time.hour == 18){
+      hour = 9;
+    }
+    else if(homeController.time.hour == 19 || homeController.time.hour == 20){
+      hour = 10;
+    }
+    else if(homeController.time.hour == 21 || homeController.time.hour == 22){
+      hour = 11;
+    }
+    else if(homeController.time.hour == 23){
+      hour = 12;
+    }
+
     var solarTimeString = homeController.solarTime.value.replaceAll("/", "-");
     webController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse('https://ziwei.pub/astrolabe/?d=$solarTimeString&t=10&leap=false&g=${homeController.switchSexValue.isTrue ? "male":"female"}&type=solar&n=${homeController.name.text == "" ? "案例1" : homeController.name.text}'))
-      ..setUserAgent("Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36 Edg/117.0.0.0")
-      ..enableZoom(false)
-      ..setNavigationDelegate(NavigationDelegate(
-        onPageFinished: (url) {
-          webController.runJavaScript(
-              "javascript:(function() { var head = document.querySelector('#app > div > div > div.wzbz_header');head.remove(head);var footer = document.querySelector('#app > div > div > div.tab_block');})()"
-          );
-        },
-        // onNavigationRequest: (NavigationRequest request) {
-        //   return NavigationDecision.prevent;
-        // },
-      ));
+      ..loadRequest(Uri.parse('https://ziwei.pub/astrolabe/?d=$solarTimeString&t=$hour&leap=false&g=${homeController.switchSexValue.isTrue ? "male":"female"}&type=solar&n=${homeController.name.text == "" ? "案例1" : homeController.name.text}'))
+      ..enableZoom(false);
   }
 
   @override
